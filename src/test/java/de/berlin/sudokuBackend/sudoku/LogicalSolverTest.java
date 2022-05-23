@@ -52,7 +52,8 @@ public class LogicalSolverTest {
         Sudoku toSolve = new Sudoku(game1_easy, game1_easy_solved, Difficulty.BEGINNER);
 
         LogicalSolver logicalSolver = new LogicalSolver(toSolve);
-
+        Assertions.assertFalse(toSolve.gameSolved());
+        logicalSolver.solveSudoku();
         Assertions.assertTrue(toSolve.gameSolved());
     }
 
