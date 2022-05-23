@@ -1,0 +1,8 @@
+{
+  "name": "SudokuBackend",
+  "buildpacks": [
+    {
+      "url": "heroku/java"
+    }
+  ]
+}
