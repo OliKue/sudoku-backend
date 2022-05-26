@@ -19,10 +19,16 @@ public class SudokuController {
     private SudokuService sudokuService;
 
     @CrossOrigin( {"https://my5ud0ku-app.herokuapp.com/","http://localhost:3000"})
-    @GetMapping(value = "sudoku/get/{difficulty}")
+    @GetMapping(value = "/sudoku/get/{difficulty}")
     public ResponseEntity<SudokuDTO> getSudokuForDiff(@PathVariable(value = "difficulty") Difficulty difficulty) {
         Sudoku sudoku = sudokuService.getSudokuForDiff(difficulty);
         SudokuDTO sudokuDTO = new SudokuDTO(sudoku);
         return new ResponseEntity<>(sudokuDTO, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/sudoku/count")
+    public ResponseEntity<String> getSudokuCount() {
+        return new ResponseEntity<>(sudokuService.getSudokuCount(), HttpStatus.OK);
+    }
+
 }

@@ -32,4 +32,18 @@ public class SudokuService {
         }
     }
 
+    public String getSudokuCount(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Amount of sudokus in database:");
+        sb.append(System.lineSeparator());
+        for(Difficulty d : Difficulty.values()){
+            sb.append(d.toString());
+            sb.append(": ");
+            List<Sudoku> list = sudokuRepository.findSudokuByDifficulty(d);
+            sb.append(list.size());
+            sb.append(System.lineSeparator());
+        }
+        return sb.toString();
+    }
+
 }
