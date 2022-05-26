@@ -12,14 +12,5 @@ public class SudokuBackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SudokuBackendApplication.class, args);
 	}
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/sudoku/*").allowedOrigins("https://my5ud0ku-app.herokuapp.com");
-			}
-		};
-	}
 
 }

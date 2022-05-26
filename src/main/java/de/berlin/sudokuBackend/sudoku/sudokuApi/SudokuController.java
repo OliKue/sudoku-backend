@@ -7,6 +7,7 @@ import de.berlin.sudokuBackend.sudoku.SudokuDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +18,9 @@ public class SudokuController {
     @Autowired
     private SudokuService sudokuService;
 
+    @CrossOrigin("https://my5ud0ku-app.herokuapp.com/")
     @GetMapping(value = "sudoku/get/{difficulty}")
-    public ResponseEntity<SudokuDTO> getSudokuForDiff(@PathVariable(value = "difficulty") Difficulty difficulty){
+    public ResponseEntity<SudokuDTO> getSudokuForDiff(@PathVariable(value = "difficulty") Difficulty difficulty) {
         Sudoku sudoku = sudokuService.getSudokuForDiff(difficulty);
         SudokuDTO sudokuDTO = new SudokuDTO(sudoku);
         return new ResponseEntity<>(sudokuDTO, HttpStatus.OK);
