@@ -17,8 +17,8 @@ public class SudokuController {
 
     @Autowired
     private SudokuService sudokuService;
-
-    @CrossOrigin("https://my5ud0ku-app.herokuapp.com/")
+    
+    @CrossOrigin( {"https://my5ud0ku-app.herokuapp.com/","localhost*"})
     @GetMapping(value = "sudoku/get/{difficulty}")
     public ResponseEntity<SudokuDTO> getSudokuForDiff(@PathVariable(value = "difficulty") Difficulty difficulty) {
         Sudoku sudoku = sudokuService.getSudokuForDiff(difficulty);
